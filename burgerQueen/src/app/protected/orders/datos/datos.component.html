@@ -1,0 +1,27 @@
+  
+<div class="d-flex justify-content-between">
+  <div>
+  <h3 class="text-light">Bienvenido: {{user.name}}</h3>
+</div>
+<div>
+    <button 
+       class="btn btn-light txt m-2 px-5" 
+        (click)="logout()">
+      LogOut
+   </button>
+  </div>
+</div>
+
+    
+    <hr class="text-white" />
+    <div class=" list-reset">
+        <button
+           class="btn btn-light txt m-2 px-5" 
+           *ngFor="let item of historialClient">
+           {{item}}
+    </button>
+      </div>
+      
+ 
+
+ 

@@ -1,0 +1,14 @@
+html, body{
+   width: 100%;
+}
+
+#sidebar{
+    height: auto;
+    min-height: 100px;
+    min-width: 100vw;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    
+}
