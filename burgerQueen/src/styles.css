@@ -10,3 +10,8 @@ html, body{
   height: 1px;
   background: #eee;
 }
+
+.txt{
+  color:#102442b2;
+  font-size: large;
+}
