@@ -18,12 +18,14 @@ export class FormLoginComponent  {
   constructor( private fb:FormBuilder, private authService:AuthService, private router:Router) { }
 
   login(){
-    console.log(this.formLogin.value)
+    
    const {email, password} = this.formLogin.value;
    this.authService.login(email, password)
     .subscribe(ok=>{
       console.log(ok);
+      console.log(this.authService.user)
       if(ok===true){
+        localStorage.setItem('user',JSON.stringify(this.authService.user) );
         this.router.navigateByUrl('/orders')
       }
       else{

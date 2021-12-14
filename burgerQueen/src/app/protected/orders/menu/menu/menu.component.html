@@ -1,0 +1,23 @@
+
+
+ <div 
+ class="row m-1 borders" 
+ style="max-width: 45%;"
+ *ngFor="let item of menu" >
+    <div class="row boxColor">
+      <div class="col-md-4">
+        <img  src="./assets/f2.png" class="m-1 pt-2" >
+      </div>
+      <div class="col-md-8">
+        <div class="card-body ">
+            <app-contador></app-contador>
+            
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div >
+      <h5 class="text-center">{{item.name}}</h5>
+      <p class="text-center">${{item.price}}</p>
+   </div>
+  </div>

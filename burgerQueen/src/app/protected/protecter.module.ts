@@ -7,6 +7,10 @@ import { UsersComponent } from './users/users.component';
 import { OrdersComponent } from './orders/orders.component';
 import { DatosComponent } from './orders/datos/datos.component';
 import { ClienteComponent } from './orders/cliente/cliente.component';
+import { BtnMenusComponent } from './orders/btn-menus/btn-menus.component';
+import { MenuComponent } from './orders/menu/menu/menu.component';
+import { ContadorComponent } from './orders/menu/contador/contador.component';
+
 
 
 @NgModule({
@@ -15,7 +19,10 @@ import { ClienteComponent } from './orders/cliente/cliente.component';
     UsersComponent,
     OrdersComponent,
     DatosComponent,
-    ClienteComponent
+    ClienteComponent,
+    BtnMenusComponent,
+    MenuComponent,
+    ContadorComponent
   ],
   exports:[
     ProductsComponent,

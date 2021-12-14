@@ -1,11 +1,11 @@
-import { ResolveStart } from "@angular/router";
+
 
 export interface AuthResponse{
     jwtToken?:string,
     msj?:string,
     name?:string,
     roles?:Roles,
-    ok:boolean
+    ok:boolean,
 }
 
 export interface User{

@@ -15,7 +15,9 @@ export class AuthService {
   get user(){
     return {...this._user}
   }
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this._user = JSON.parse(localStorage.getItem('user')!)|| {};
+   }
 
   login(email:string, password:string){
    
