@@ -15,3 +15,6 @@ html, body{
   color:#102442b2;
   font-size: large;
 }
+.borders{
+  border: 2px solid #15325fb2;
+}

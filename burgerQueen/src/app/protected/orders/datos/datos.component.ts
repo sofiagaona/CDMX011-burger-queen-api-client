@@ -20,7 +20,8 @@ export class DatosComponent {
   constructor( private serviceOrders:OrdersService, private router:Router, private authService: AuthService) { }
 
   logout(){
-    this.router.navigateByUrl('/auth')
+    localStorage.clear();
+    this.router.navigateByUrl('/auth');
   }
 
 }
