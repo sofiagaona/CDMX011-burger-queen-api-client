@@ -10,6 +10,7 @@ import { ClienteComponent } from './orders/cliente/cliente.component';
 import { BtnMenusComponent } from './orders/btn-menus/btn-menus.component';
 import { MenuComponent } from './orders/menu/menu/menu.component';
 import { ContadorComponent } from './orders/menu/contador/contador.component';
+import { ComandaComponent } from './orders/comanda/comanda/comanda.component';
 
 
 
@@ -22,7 +23,8 @@ import { ContadorComponent } from './orders/menu/contador/contador.component';
     ClienteComponent,
     BtnMenusComponent,
     MenuComponent,
-    ContadorComponent
+    ContadorComponent,
+    ComandaComponent
   ],
   exports:[
     ProductsComponent,

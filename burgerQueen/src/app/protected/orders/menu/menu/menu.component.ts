@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { OrdersService } from '../../../services/orders.service';
+
 
 @Component({
   selector: 'app-menu',
@@ -7,6 +8,8 @@ import { OrdersService } from '../../../services/orders.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
+
+  
 
   constructor( private serviceOrders:OrdersService) { }
   get menu(){
