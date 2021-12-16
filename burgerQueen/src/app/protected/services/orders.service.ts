@@ -2,8 +2,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, of, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { ResponsProducts, Product } from '../orders/interfaces/interfaces.orders';
+import { ResponsProducts, Product, Comanda, ToPay } from '../orders/interfaces/interfaces.orders';
 import { AuthService } from '../../auth/services/auth.service';
+
 
 
 @Injectable({
@@ -15,9 +16,23 @@ private _historialClient: string[] = [];
 private _historialMenu: string[] = ["Desayuno", "Comida"]
 private _baseUrl: string = environment.baseUrl;
 public productsMenu: Product[]=[];
-public contador: number = 0;
-
-
+public precio:number=0;
+public idProduct:string=""
+private _comanda: Comanda[]=[];
+public subtotales:number=0;
+private _toPay:ToPay={
+   subTotal:0,
+   iva(subtotales){return subtotales * 0.16},
+   Total(subtotales, iva){return subtotales + iva}
+}
+public addSubTotal:number[]=[];
+public  products:Comanda={
+  productId:"",
+  qty:0,
+  precio:0,
+  nomber:"",
+  subTotal(precio, qty){return precio * qty},
+}
 
 
 get historialClient(){
@@ -26,6 +41,15 @@ get historialClient(){
 
 get historialMenu(){
   return [...this._historialMenu]
+}
+
+get comanda(){
+  
+  return [...this._comanda]
+}
+
+get toPay(){
+  return {...this._toPay}
 }
 
 listClient(cliente:string){
@@ -56,11 +80,59 @@ listClient(cliente:string){
     const url = `${this._baseUrl}/products`
     return this.http.get<ResponsProducts>(url,{ headers: options, params: params  })
        .subscribe(resp=>{ 
-         console.log(resp.products)
          this.productsMenu=resp.products;
         
        })
   }
 
+  addComanda(precio:number, nombre:string, id:string, contador:number){
+   if (this._comanda.length ===0){
+    this._comanda.push(this.products)
+   }
+
+   for(let i=0; this._comanda.length>i;i++){
+    
+       if(this._comanda[i].productId===id){
+        this._comanda[i].qty=contador;
+        return 
+      }
+     else{
+       
+      this.products = {
+        productId:id,
+        qty:contador,
+        precio:precio,
+        nomber:nombre,
+        subTotal(precio, contador){
+          let subtotal= precio * contador;
+          return subtotal
+        },
+        
+      }
+      
+    }
+  }
+    this._comanda.push(this.products)
+    this.addSubTotal.push(this.products.subTotal(precio, contador))
+    this.addToPay()
+  }
+
+  addToPay(){
+    let subtotales = this.addSubTotal.reduce((a,b)=>{return a+b})
+      this._toPay = {
+       subTotal:subtotales,
+       iva(subTotal){
+        let sumaTotal = subTotal * 0.16
+        return Math.round(sumaTotal)
+       },
+       Total(subtotales,iva){
+         return subtotales + iva
+       }
+       
+      }
+
+    
+     
+  }
  
 }
