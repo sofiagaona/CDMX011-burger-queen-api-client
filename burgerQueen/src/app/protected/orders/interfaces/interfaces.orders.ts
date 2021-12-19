@@ -18,7 +18,7 @@ export interface Comanda {
     qty:number;
     precio:number;
     nomber:string;
-    subTotal(precio:number, cantidad:number):number
+    subTotal:number;
 }
 
 export interface ToPay{

@@ -25,13 +25,13 @@ private _toPay:ToPay={
    iva(subtotales){return subtotales * 0.16},
    Total(subtotales, iva){return subtotales + iva}
 }
-public addSubTotal:number[]=[];
+public addSubTotal!:number[];
 public  products:Comanda={
   productId:"",
   qty:0,
   precio:0,
   nomber:"",
-  subTotal(precio, qty){return precio * qty},
+  subTotal:0
 }
 
 
@@ -85,7 +85,7 @@ listClient(cliente:string){
        })
   }
 
-  addComanda(precio:number, nombre:string, id:string, contador:number){
+  addComanda(precio:number, nombre:string, id:string, contador:number,subTotal:number){
    if (this._comanda.length ===0){
     this._comanda.push(this.products)
    }
@@ -94,6 +94,8 @@ listClient(cliente:string){
     
        if(this._comanda[i].productId===id){
         this._comanda[i].qty=contador;
+        this._comanda[i].subTotal=subTotal
+        this.addToPay()
         return 
       }
      else{
@@ -103,21 +105,17 @@ listClient(cliente:string){
         qty:contador,
         precio:precio,
         nomber:nombre,
-        subTotal(precio, contador){
-          let subtotal= precio * contador;
-          return subtotal
-        },
-        
+        subTotal:subTotal
       }
       
     }
   }
     this._comanda.push(this.products)
-    this.addSubTotal.push(this.products.subTotal(precio, contador))
     this.addToPay()
   }
 
   addToPay(){
+    this.addSubTotal = this._comanda.map(element=>{return element.subTotal})
     let subtotales = this.addSubTotal.reduce((a,b)=>{return a+b})
       this._toPay = {
        subTotal:subtotales,

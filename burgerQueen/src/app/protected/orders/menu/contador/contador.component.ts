@@ -14,23 +14,16 @@ export class ContadorComponent {
   @Input()nombreProduct:string="";
   @Input()id:string="";
 
-//   @Input() comanda:Comanda ={
-//     qty:0,
-//     precio:0,
-//     nomber:"",
-//     subtotal(cantidad:number, precio:number):number{
-//       return cantidad * precio
-//     }
-
-//  }
-
+subtotal(cantidad:number, precio:number):number{
+  return cantidad * precio}
 
 
    contador(base:number){
       this.suma+=base
-      this.orderService.addComanda(this.precio, this.nombreProduct, this.id, this.suma)
-   
-      // console.log(this.comanda.subtotal(this.orderService.contador, this.precio,))
+      if(this.suma>=0){
+        this.subtotal(this.suma, this.precio)
+         this.orderService.addComanda(this.precio, this.nombreProduct, this.id, this.suma, this.subtotal(this.suma, this.precio))
+      }
   }
 
   constructor(private orderService:OrdersService) { }

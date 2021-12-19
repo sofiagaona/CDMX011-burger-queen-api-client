@@ -8,7 +8,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { DatosComponent } from './orders/datos/datos.component';
 import { ClienteComponent } from './orders/cliente/cliente.component';
 import { BtnMenusComponent } from './orders/btn-menus/btn-menus.component';
-import { MenuComponent } from './orders/menu/menu/menu.component';
+import { MenuComponent } from './orders/menu/menu/menu.component'
 import { ContadorComponent } from './orders/menu/contador/contador.component';
 import { ComandaComponent } from './orders/comanda/comanda/comanda.component';
 
