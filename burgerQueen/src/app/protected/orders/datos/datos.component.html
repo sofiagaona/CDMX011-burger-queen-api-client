@@ -16,10 +16,28 @@
     <hr class="text-white" />
     <div class=" list-reset">
         <button
+           type="button"
            class="btn btn-light txt m-2 px-5" 
-           *ngFor="let item of historialClient">
-           {{item}}
+           *ngFor="let item of listOrder"
+           (click)="openModal(item)"
+           >
+           {{item.cliente}}
     </button>
+
+    <ng-template #mymodal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+      </div>
+    </ng-template>
       </div>
       
  

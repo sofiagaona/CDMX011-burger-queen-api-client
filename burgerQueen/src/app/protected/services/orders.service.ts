@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, of, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { ResponsProducts, Product, Comanda, ToPay } from '../orders/interfaces/interfaces.orders';
+import { ResponsProducts, Product, Comanda, ToPay, OrderResponse, Order } from '../orders/interfaces/interfaces.orders';
 import { AuthService } from '../../auth/services/auth.service';
 
 
@@ -12,13 +12,14 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class OrdersService {
 
-private _historialClient: string[] = [];
 private _historialMenu: string[] = ["Desayuno", "Comida"]
 private _baseUrl: string = environment.baseUrl;
 public productsMenu: Product[]=[];
 public precio:number=0;
 public idProduct:string=""
 private _comanda: Comanda[]=[];
+private _order!:Order;
+private _listOrders:Order[]=[];
 public subtotales:number=0;
 private _toPay:ToPay={
    subTotal:0,
@@ -30,13 +31,8 @@ public  products:Comanda={
   productId:"",
   qty:0,
   precio:0,
-  nomber:"",
+  name:"",
   subTotal:0
-}
-
-
-get historialClient(){
-  return [...this._historialClient]
 }
 
 get historialMenu(){
@@ -52,25 +48,26 @@ get toPay(){
   return {...this._toPay}
 }
 
-listClient(cliente:string){
-    cliente= cliente.trim().toLocaleLowerCase()
-    
-        this._historialClient.push(cliente);
-        this._historialClient=this._historialClient.splice(0,10);
-        localStorage.setItem('historialCliente', JSON.stringify(this._historialClient))
-    
+get listOrder(){
+  return [...this._listOrders]
 }
+
   constructor(private http:HttpClient, private authService: AuthService) { 
-    this._historialClient= JSON.parse(localStorage.getItem('historialCliente')! )|| [];
+    this.productsMenu= JSON.parse(localStorage.getItem('productsMenu')! )|| [];
+    this._comanda=JSON.parse(localStorage.getItem('comanda')!)|| [];
+    // falta local storage de topay
+    this._listOrders=JSON.parse(localStorage.getItem('listOrder')!)||[];
+
   }
 
- private createRequestOption(){
+  createRequestOption(){
    const headers = new HttpHeaders ({
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${this.authService.user.token}`,
-    })
+    });
    return headers
  }
+
 
   buscarMenu(query:string){
     let options = this.createRequestOption();
@@ -81,6 +78,7 @@ listClient(cliente:string){
     return this.http.get<ResponsProducts>(url,{ headers: options, params: params  })
        .subscribe(resp=>{ 
          this.productsMenu=resp.products;
+         localStorage.setItem('productsMenu', JSON.stringify(this.productsMenu))
         
        })
   }
@@ -104,14 +102,15 @@ listClient(cliente:string){
         productId:id,
         qty:contador,
         precio:precio,
-        nomber:nombre,
+        name:nombre,
         subTotal:subTotal
       }
       
     }
   }
     this._comanda.push(this.products)
-    this.addToPay()
+   localStorage.setItem('comanda', JSON.stringify(this._comanda));
+   this.addToPay()
   }
 
   addToPay(){
@@ -126,11 +125,49 @@ listClient(cliente:string){
        Total(subtotales,iva){
          return subtotales + iva
        }
-       
       }
+    }
 
-    
-     
+  createOrder(cliente:string, products:Comanda[]){
+    products.splice(0,1)
+    const url = `${this._baseUrl}/orders`
+    let options = this.createRequestOption();
+    let body={}
+    if(products.length!==0){
+    body = {
+          cliente:cliente,
+          products:products
+    }
+    }
+    return this.http.post<OrderResponse>(url, body, { headers: options })
+    .pipe(
+      tap( resp => {
+        if(resp.orders){
+          this._order = {
+            userId: resp.orders.userId,
+            cliente: resp.orders.cliente,
+            products: resp.orders.products,
+            status: resp.orders.status,
+            dateEnry: resp.orders.dateEnry,
+            estado: resp.orders.estado,
+            _id: resp.orders._id
+          }
+          this.addOrder(this._order);
+        }
+        
+      }),
+      map (resp=>resp.orders?.status),
+      catchError(err=>of(err.error.message))
+    )
+
   }
  
+  addOrder(order:Order){
+    console.log(order);
+    this._listOrders.push(this._order);
+    localStorage.setItem('listOrder', JSON.stringify(this._listOrders));
+    console.log(this._listOrders);
+  }
 }
+
+
