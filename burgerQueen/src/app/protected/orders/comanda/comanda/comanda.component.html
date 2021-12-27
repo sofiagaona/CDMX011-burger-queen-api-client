@@ -9,9 +9,9 @@
     </thead>
     <tbody>
       <tr  *ngFor="let item of comanda">
-        <td *ngIf="item.qty>=0 && item.nomber!==''">{{item.qty}}</td>
+        <td *ngIf="item.qty>=0 && item.name">{{item.qty}}</td>
         <td *ngIf="item.precio!==0">${{item.precio}}</td>
-        <td class="text-start" *ngIf="item.nomber!==''">{{item.nomber}}</td>
+        <td class="text-start" *ngIf="item.name!==''">{{item.name}}</td>
         <td class="fw-bold" *ngIf="item.subTotal>0">${{item.subTotal}}</td>
       </tr>
     </tbody>

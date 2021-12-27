@@ -2,18 +2,26 @@
     <div class="col-auto">
       <label for="inputName" class="col-form-label text-light fs-4">Cliente: </label>
     </div>
-   
+     <form
+     [formGroup]="formOrderCliente"
+     (ngSubmit)="AddClient()"
+     >
       <div class="col-auto">
          <input 
            type="text" 
-           id="nameCliente" 
-           class="form-control" 
-           #txtName
-           (keyup.enter)="AddClient()">
+           id=" name-cliente" 
+           class="form-control"
+           formControlName="cliente" 
+           >
      </div>
         <div class="col-auto" >
-        <button type="submit" class="btn btn-light txt m-2 px-5">Generar Orden</button>
+        <button 
+           type="submit" 
+           class="btn btn-light txt m-2 px-5"
+           [disabled]="formOrderCliente.invalid"
+           >Generar Orden</button>
        </div>
+      </form>
   </div>         
     
    

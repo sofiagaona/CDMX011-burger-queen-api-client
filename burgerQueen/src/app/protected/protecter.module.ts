@@ -11,6 +11,8 @@ import { BtnMenusComponent } from './orders/btn-menus/btn-menus.component';
 import { MenuComponent } from './orders/menu/menu/menu.component'
 import { ContadorComponent } from './orders/menu/contador/contador.component';
 import { ComandaComponent } from './orders/comanda/comanda/comanda.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ModalOrderComponent } from './orders/modal-order/modal-order.component';
 
 
 
@@ -24,7 +26,8 @@ import { ComandaComponent } from './orders/comanda/comanda/comanda.component';
     BtnMenusComponent,
     MenuComponent,
     ContadorComponent,
-    ComandaComponent
+    ComandaComponent,
+    ModalOrderComponent
   ],
   exports:[
     ProductsComponent,
@@ -33,7 +36,8 @@ import { ComandaComponent } from './orders/comanda/comanda/comanda.component';
   ],
   imports: [
     CommonModule,
-    ProtecterRoutingModule
+    ProtecterRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ProtecterModule { }
