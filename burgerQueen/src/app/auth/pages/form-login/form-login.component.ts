@@ -22,11 +22,14 @@ export class FormLoginComponent  {
    const {email, password} = this.formLogin.value;
    this.authService.login(email, password)
     .subscribe(ok=>{
-      console.log(ok);
-      console.log(this.authService.user)
-      if(ok===true){
+      
+      if((ok===true)&&(this.authService.user.roles?.mesero===true)){
         localStorage.setItem('user',JSON.stringify(this.authService.user) );
         this.router.navigateByUrl('/orders')
+      }
+      else if((ok===true)&&(this.authService.user.roles?.cocina===true)){
+        localStorage.setItem('user',JSON.stringify(this.authService.user) );
+        this.router.navigateByUrl('/kitchen')
       }
       else{
       

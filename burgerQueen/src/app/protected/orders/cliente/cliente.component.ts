@@ -33,7 +33,7 @@ export class ClienteComponent  {
     const products = this.serviceOrders.comanda;
     this.serviceOrders.createOrder(cliente, products)
       .subscribe(orders=>{
-        if(orders==='pending'){
+        if(orders==='Pendiente'){
           Swal.fire({
             title: 'OK!',
             text: 'La orden se a generado exitosamente',

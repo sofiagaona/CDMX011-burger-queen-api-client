@@ -4,6 +4,7 @@ import { OrdersComponent } from './protected/orders/orders.component';
 import { ProductsComponent } from './protected/products/products.component';
 import { UsersComponent } from './protected/users/users.component';
 import { LoginComponent } from './auth/pages/login/login.component';
+import { KitchenComponent } from './protected/kitchen/kitchen.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path:'orders',
     component:OrdersComponent
+  },
+  {
+    path:'kitchen',
+    component:KitchenComponent
   },
   {
     path:'products',
