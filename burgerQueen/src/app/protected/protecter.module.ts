@@ -13,6 +13,8 @@ import { ContadorComponent } from './orders/menu/contador/contador.component';
 import { ComandaComponent } from './orders/comanda/comanda/comanda.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalOrderComponent } from './orders/modal-order/modal-order.component';
+import { KitchenComponent } from './kitchen/kitchen.component';
+import { OrdersKitchenComponent } from './kitchen/orders-kitchen/orders-kitchen.component';
 
 
 
@@ -27,12 +29,15 @@ import { ModalOrderComponent } from './orders/modal-order/modal-order.component'
     MenuComponent,
     ContadorComponent,
     ComandaComponent,
-    ModalOrderComponent
+    ModalOrderComponent,
+    KitchenComponent,
+    OrdersKitchenComponent
   ],
   exports:[
     ProductsComponent,
     UsersComponent,
-    OrdersComponent
+    OrdersComponent,
+    KitchenComponent
   ],
   imports: [
     CommonModule,

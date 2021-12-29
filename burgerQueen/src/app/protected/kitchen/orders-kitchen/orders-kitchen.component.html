@@ -1,0 +1,28 @@
+
+<div class="row back-color">
+    <div *ngFor="let order of _getOrders" class="col-md-3 col-sm-6 m-3">
+        <div *ngIf="order.status==='Pendiente'" class= "card">
+            
+            <div class="card-body m-2">
+                <p class="card-text"><b>Mesero: </b>{{order.userId.id}}</p>
+               <p class="card-text"><b>Cliente: </b>{{order.cliente}}</p>
+               <hr>
+               <h5>Orden</h5>
+                <div class="px-2 color txt-color" *ngFor="let products of order?.products">
+                   <p><b>{{products.qty}}  </b>{{products.name}}</p>
+               </div>
+               <hr>
+               <p class="card-text"><b>Estatus: </b>{{order.status}}</p>
+               <p class="card-text"><b>Fecha Inicio: </b>{{order.dateEnry}}</p>
+               <hr>
+               <div class="d-flex justify-content-center">
+                <button 
+                    type="button" 
+                    class="btn btn-success"
+                    (click)="updateStatus(order._id, 'Terminada')"
+                    >Terminada</button>
+              </div>  
+            </div>
+        </div>
+    </div>
+</div>

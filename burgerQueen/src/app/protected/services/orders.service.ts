@@ -163,10 +163,8 @@ get listOrder(){
   }
  
   addOrder(order:Order){
-    console.log(order);
     this._listOrders.push(this._order);
     localStorage.setItem('listOrder', JSON.stringify(this._listOrders));
-    console.log(this._listOrders);
   }
 }
 
