@@ -12,9 +12,9 @@
   </div>
 </div>
 
-    
-    <hr class="text-white" />
+<div *ngIf="user.roles?.mesero===true">
     <div class=" list-reset">
+      <hr class="text-white" />
         <button
            type="button"
            class="btn btn-light txt m-2 px-5 position-relative" 
@@ -27,14 +27,19 @@
                <span class="visually-hidden">New alerts</span>
             </span>
           </div>
+          <div *ngIf="item.status==='Proceso'">
+            <span class="position-absolute top-0 start-100 translate-middle p-2 bg-warning border border-light rounded-circle">
+              <span class="visually-hidden">New alerts</span>
+           </span>
+         </div>
           <div *ngIf="item.status==='Terminada'">
             <span class="position-absolute top-0 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
               <span class="visually-hidden">New alerts</span>
            </span>
          </div>
-    </button>
-
-    
+      </button>
+    </div>
+</div>   
       
  
 

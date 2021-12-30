@@ -4,6 +4,7 @@ import { KitchenService } from '../../services/kitchen.service';
 import { Order } from '../../orders/interfaces/interfaces.orders';
 import { catchError, map, tap, of } from 'rxjs';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders-kitchen',
@@ -24,7 +25,7 @@ export class OrdersKitchenComponent implements OnInit {
       this._getOrders=resp;
       this.orderKitchen.Listorders(this._getOrders)
       localStorage.setItem('listOrder', JSON.stringify(this._getOrders))
-     
+      
     })
   }
 
@@ -36,9 +37,10 @@ export class OrdersKitchenComponent implements OnInit {
     if(resp===status){
       Swal.fire({
         title: 'OK!',
-        text: 'La orden esta terminada',
+        text: `La orden esta ${status}`,
         confirmButtonText: 'OK'
       })
+      this.ngOnInit();
       //localStorage.setItem('order',JSON.stringify(this.serviceOrders.) );
       
     }
