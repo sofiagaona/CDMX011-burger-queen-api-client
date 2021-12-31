@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrdersService } from '../../services/orders.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
@@ -39,6 +40,7 @@ export class ClienteComponent  {
             text: 'La orden se a generado exitosamente',
             confirmButtonText: 'OK'
           })
+        
           //localStorage.setItem('order',JSON.stringify(this.serviceOrders.) );
           
         }
@@ -50,6 +52,7 @@ export class ClienteComponent  {
             confirmButtonText: 'OK'
           })
         }
+  
       })
   }
  

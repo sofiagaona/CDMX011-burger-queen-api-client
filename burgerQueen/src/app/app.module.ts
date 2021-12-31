@@ -6,6 +6,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { ProtecterModule } from './protected/protecter.module';
 import { AuthModule } from './auth/auth.module';
+import { MaterialModule } from './material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     NgbModule,
     ProtecterModule,
-    AuthModule
+    AuthModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,6 +14,7 @@ import { KitchenService } from '../../services/kitchen.service';
 })
 export class DatosComponent implements OnInit {
 public _getOrders:Order[]=[];
+public filterOrderByUser:Order[]=[];
 get listOrder(){
   return this.serviceOrders.listOrder
 }
@@ -23,7 +24,7 @@ get listOrder(){
   }
   constructor( private serviceOrders:OrdersService, private ServiceKitchen:KitchenService, private router:Router, private authService: AuthService,
     private modalService: NgbModal) { 
-      this._getOrders=JSON.parse(localStorage.getItem('listOrder')!)||[];
+      this.filterOrderByUser=JSON.parse(localStorage.getItem('listOrder')!)||[];
     }
 
     ngOnInit(): void {
@@ -31,9 +32,15 @@ get listOrder(){
       .subscribe(resp=>{ 
         this._getOrders=resp
         this.ServiceKitchen.Listorders(this._getOrders)
-        localStorage.setItem('listOrder', JSON.stringify(this._getOrders))
+
+        let filtrarOrderUser=resp.filter(element=>{
+          return (element.userId.id===this.authService.user.id)&&(element.status==='Pendiente'||element.status==='Terminada'||element.status==='Proceso')
+        })
+        this.filterOrderByUser= filtrarOrderUser
+        localStorage.setItem('listOrder', JSON.stringify(this.filterOrderByUser))
        
       })
+      
     }
 
     openModal (order:Order) { 

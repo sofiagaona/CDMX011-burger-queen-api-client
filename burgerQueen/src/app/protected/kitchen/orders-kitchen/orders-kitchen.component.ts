@@ -20,8 +20,7 @@ export class OrdersKitchenComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderKitchen.orders()
-    .subscribe(resp=>{ 
-      
+    .subscribe(resp=>{  
       this._getOrders=resp;
       this.orderKitchen.Listorders(this._getOrders)
       localStorage.setItem('listOrder', JSON.stringify(this._getOrders))
@@ -32,8 +31,6 @@ export class OrdersKitchenComponent implements OnInit {
  updateStatus(idOrder:string, status:string){
    this.orderKitchen.updateOrder(idOrder, status)
    .subscribe(resp=>{
-     console.log(resp)
-     console.log(status)
     if(resp===status){
       Swal.fire({
         title: 'OK!',
