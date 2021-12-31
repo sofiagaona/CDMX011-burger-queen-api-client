@@ -30,6 +30,7 @@ export class AuthService {
         if(resp.ok){
           this._user = {
             name:resp.name!,
+            id:resp.id!,
             token:resp.jwtToken!,
             roles:resp.roles!,
           }

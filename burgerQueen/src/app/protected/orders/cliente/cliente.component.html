@@ -1,26 +1,31 @@
-<div class="row g-3 align-items-center flex-row">
-    <div class="col-auto">
-      <label for="inputName" class="col-form-label text-light fs-4">Cliente: </label>
-    </div>
-     <form
+<div row g-3 align-items-center>
+    <form
+     class="d-flex justify-content-start marge"
      [formGroup]="formOrderCliente"
      (ngSubmit)="AddClient()"
-     >
-      <div class="col-auto">
+     > 
+   
+     <div class="col-auto marge">
+         <label for="name-cliente" class="col-form-label text-white fs-4 ">Cliente: </label>
+      </div>
+      <div class="col-auto marge">   
          <input 
            type="text" 
            id=" name-cliente" 
-           class="form-control"
+           class="form-control "
            formControlName="cliente" 
            >
-     </div>
-        <div class="col-auto" >
-        <button 
+        </div> 
+      
+        <div class="col-auto marge"> 
+          <button 
            type="submit" 
-           class="btn btn-light txt m-2 px-5"
+           class="btn btn-light txt px-5"
            [disabled]="formOrderCliente.invalid"
-           >Generar Orden</button>
-       </div>
+           >Generar Orden
+          </button>
+        </div>  
+       
       </form>
   </div>         
     

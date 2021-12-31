@@ -18,20 +18,20 @@
                <div class="d-flex justify-content-around">
                 <button 
                 type="button" 
-                class="btn btn-warning "
+                class="btn bg-warning text-body"
                 (click)="updateStatus(order._id, 'Proceso')"
                 >Proceso
             </button>
                 <button 
                     type="button" 
-                    class="btn btn-success"
+                    class="btn bg-success text-body"
                     (click)="updateStatus(order._id, 'Terminada')"
                     >Terminada
                 </button>
                 
               </div> 
               <div *ngIf="order.status==='Proceso'">
-              <span class="position-absolute top-0 start-100 translate-middle p-2 bg-warning border border-light rounded-circle">
+              <span class="position-absolute top-0 start-100 translate-middle p-3 bg-warning border border-light rounded-circle">
                 <span class="visually-hidden">New alerts</span>
               </span> 
             </div>

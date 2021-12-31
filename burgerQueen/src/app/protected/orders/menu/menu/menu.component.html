@@ -1,17 +1,16 @@
 
 
  <div 
- class="row m-1 borders" 
+ class="row m-1 borders boxColor" 
  style="max-width: 45%;"
  *ngFor="let item of menu" >
-    <div class="row boxColor">
+    <div class="row ">
       <div class="col-md-4">
         <img  src="./assets/f2.png" class="m-1 pt-2" >
       </div>
       <div class="col-md-8">
         <div class="card-body ">
-            <app-contador [precio]="item.price" [nombreProduct]="item.name" [id]="item._id"></app-contador>
-            
+           <app-contador [precio]="item.price" [nombreProduct]="item.name" [id]="item._id"></app-contador>
         </div>
       </div>
     </div>
@@ -20,4 +19,4 @@
       <h5 class="text-center">{{item.name}}</h5>
       <p class="text-center">${{item.price}}</p>
    </div>
-  </div>
+</div>
