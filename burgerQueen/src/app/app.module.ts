@@ -9,11 +9,16 @@ import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatCarouselModule} from '@ngmodule/material-carousel';
+
+
+
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,10 @@ import { MatSliderModule } from '@angular/material/slider';
     MaterialModule,
     BrowserAnimationsModule,
     MatSliderModule,
+    MatCarouselModule.forRoot(),
     
+    
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
