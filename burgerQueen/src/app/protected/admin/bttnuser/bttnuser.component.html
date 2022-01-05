@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-center mt-5">
+    <button 
+       type="button" 
+       class="btn btn-primary btn-lg m-4 px-5 "
+       *ngFor="let item of bttnUserProduct"
+       (click)="getUserOrProduct(item)"
+       >{{item}}
+       
+     </button>
+    
+ </div>

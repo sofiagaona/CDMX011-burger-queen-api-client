@@ -63,7 +63,6 @@ export class KitchenService {
   }
 
   Listorders(orders:Order[]){
-    console.log(orders)
     this.getOrders=orders;
     
   }

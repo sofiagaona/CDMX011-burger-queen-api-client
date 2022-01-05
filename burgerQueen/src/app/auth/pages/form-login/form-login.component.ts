@@ -31,6 +31,10 @@ export class FormLoginComponent  {
         localStorage.setItem('user',JSON.stringify(this.authService.user) );
         this.router.navigateByUrl('/kitchen')
       }
+      else if((ok===true)&&(this.authService.user.roles?.admin===true)){
+        localStorage.setItem('user',JSON.stringify(this.authService.user) );
+        this.router.navigateByUrl('/Administrador')
+      }
       else{
       
         Swal.fire({
