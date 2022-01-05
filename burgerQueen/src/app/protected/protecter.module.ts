@@ -15,6 +15,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalOrderComponent } from './orders/modal-order/modal-order.component';
 import { KitchenComponent } from './kitchen/kitchen.component';
 import { OrdersKitchenComponent } from './kitchen/orders-kitchen/orders-kitchen.component';
+import { AdminComponent } from './admin/admin.component';
+import { BttnuserComponent } from './admin/bttnuser/bttnuser.component';
+import { ShowUsersComponent } from './admin/show-users/show-users.component';
+import { ShowProductsComponent } from './admin/show-products/show-products.component';
+
 
 
 
@@ -31,7 +36,12 @@ import { OrdersKitchenComponent } from './kitchen/orders-kitchen/orders-kitchen.
     ComandaComponent,
     ModalOrderComponent,
     KitchenComponent,
-    OrdersKitchenComponent
+    OrdersKitchenComponent,
+    AdminComponent,
+    BttnuserComponent,
+    ShowUsersComponent,
+    ShowProductsComponent,
+    
   ],
   exports:[
     ProductsComponent,

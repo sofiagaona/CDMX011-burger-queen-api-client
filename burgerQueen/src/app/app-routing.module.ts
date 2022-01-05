@@ -5,6 +5,8 @@ import { ProductsComponent } from './protected/products/products.component';
 import { UsersComponent } from './protected/users/users.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { KitchenComponent } from './protected/kitchen/kitchen.component';
+import { ValidarTokenGuard } from './guards/validar-token.guard';
+import { AdminComponent } from './protected/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -13,15 +15,21 @@ const routes: Routes = [
   },
   {
     path:'orders',
-    component:OrdersComponent
+    component:OrdersComponent,
+    canActivate:[ValidarTokenGuard],
+    canLoad:[ValidarTokenGuard]
   },
   {
     path:'kitchen',
-    component:KitchenComponent
+    component:KitchenComponent,
+    canActivate:[ValidarTokenGuard],
+    canLoad:[ValidarTokenGuard]
   },
   {
-    path:'products',
-    component:ProductsComponent
+    path:'admin',
+    component:AdminComponent,
+    canActivate:[ValidarTokenGuard],
+    canLoad:[ValidarTokenGuard]
   },
   {
     path:'users',

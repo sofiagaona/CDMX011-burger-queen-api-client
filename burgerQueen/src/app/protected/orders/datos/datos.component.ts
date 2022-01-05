@@ -34,7 +34,7 @@ get listOrder(){
         this.ServiceKitchen.Listorders(this._getOrders)
 
         let filtrarOrderUser=resp.filter(element=>{
-          return (element.userId.id===this.authService.user.id)&&(element.status==='Pendiente'||element.status==='Terminada'||element.status==='Proceso')
+          return (element.userId.id===this.authService.user._id)&&(element.status==='Pendiente'||element.status==='Terminada'||element.status==='Proceso')
         })
         this.filterOrderByUser= filtrarOrderUser
         localStorage.setItem('listOrder', JSON.stringify(this.filterOrderByUser))

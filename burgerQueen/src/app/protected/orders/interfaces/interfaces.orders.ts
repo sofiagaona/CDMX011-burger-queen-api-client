@@ -1,3 +1,4 @@
+import { User } from '../../../auth/interfaces/interface.auth';
 export interface ResponsProducts {
     products:Product[];
     
@@ -50,4 +51,5 @@ export interface Order{
 export interface IdCurrentUser{
     id:string
 }
+
 

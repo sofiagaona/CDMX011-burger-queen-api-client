@@ -5,15 +5,16 @@ export interface AuthResponse{
     msj?:string,
     name?:string,
     roles?:Roles,
-    id?:string;
+    _id?:string;
     ok:boolean,
 }
 
 export interface User{
     name:string;
     token:string;
-    id:string;
+    _id:string;
     roles?:Roles;
+    email?:string;
 }
 
 export interface Roles{
