@@ -1,5 +1,11 @@
 # BurgerQueen
 
+Puede visitar el sitio en: https://fluffy-centaur-ee1cea.netlify.app/ 
+### Credenciales: 
+- mesero@prueba.com   contraseña: mesero
+- cocina@prueba.com.  contraseña: cocina
+- administrador@prueba.com contraseña: administrador
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
 
 ## Development server
