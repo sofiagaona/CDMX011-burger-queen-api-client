@@ -1,5 +1,12 @@
 # Burger Queen (API Client)
 
+Puede visitar el sitio en: https://fluffy-centaur-ee1cea.netlify.app/ , esta versión es solo para escritorio con resoluciones mayores a 1300px, actualmente se esta trabajando para version movil
+
+Credenciales:
+mesero@prueba.com contraseña: mesero
+cocina@prueba.com. contraseña: cocina
+administrador@prueba.com contraseña: administrador
+
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
